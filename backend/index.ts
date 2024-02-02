@@ -4,7 +4,6 @@ import User from "./models/User.model";
 import { ContentStatus } from "./enums/ContentStatus.enum";
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { stat } from "fs";
 
 const app = express();
 const PORT = 4000;
