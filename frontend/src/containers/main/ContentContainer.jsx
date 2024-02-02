@@ -27,14 +27,19 @@ const ContentContainer = ({ userId }) => {
       <ul>
         {contentForUser.map((content) => (
           <ContentItemWrapper key={content.id}>
+            <p>Status: {content.status}</p>
+            <img src={content.url}/>
             <div>
-              <p>Status: {content.status}</p>
+              <ActionButtons>
+                <button className="reject" onClick={() => handleReject(content.id)}>REJECT</button>
+                {content.status === 'approved' ? (
+                  <button className="approve-faded" onClick={() => handleApprove(content.id)}>APPROVE</button>
+                ) : (
+                  <button className="approve" onClick={() => handleApprove(content.id)}>APPROVE</button>
+                )}
+              </ActionButtons>
             </div>
-            <img src={content.url} alt={`Content ${content.id}`} />
-            <ActionButtons>
-              <button className="reject" onClick={() => handleReject(content.id)}>REJECT</button>
-              <button className="approve" onClick={() => handleApprove(content.id)}>APPROVE</button>
-            </ActionButtons>
+
           </ContentItemWrapper>
         ))}
       </ul>

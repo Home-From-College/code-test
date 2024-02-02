@@ -16,6 +16,7 @@ export const MainContainer = () => {
     // eslint-disable-next-line
   }, []);
 
+  // Let's include an option to hide a user's content so testing isn't as much of a pain
   const handleViewContent = (userId) => {
     setSelectedUserIds((prevSelectedUserIds) =>
       prevSelectedUserIds.includes(userId)
@@ -28,13 +29,11 @@ export const MainContainer = () => {
 
   return (
     <Container>
-      <h1>Users</h1>
-
       <UsersListContainer>
         {users.map((user) => (
           <React.Fragment key={`user-${user.id}`}>
             <UserContainer>
-              <h3>{user.name}</h3>
+              <h1>{user.name}</h1>
               <button onClick={() => handleViewContent(user.id)}>
                 {selectedUserIds.includes(user.id) ? "Hide Content" : "View Content"}
               </button>
