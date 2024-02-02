@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ContentContainerWrapper, ContentItemWrapper, ActionButtons } from "./styles";
-import { onLoadUserContent } from "../../redux/actions/content-actions";
+import { onLoadUserContent, onUpdateContentStatus } from "../../redux/actions/content-actions";
 
 const ContentContainer = ({ userId }) => {
   const dispatch = useDispatch();
@@ -15,13 +15,11 @@ const ContentContainer = ({ userId }) => {
   const contentForUser = userContents[userId] || [];
 
   const handleReject = (contentId) => {
-    console.log("REJECT")
-    // dispatch(onRejectContent(contentId));
+    dispatch(onUpdateContentStatus(contentId, "rejected"));
   };
 
   const handleApprove = (contentId) => {
-    console.log("APPROVE")
-    // dispatch(onApproveContent(contentId));
+    dispatch(onUpdateContentStatus(contentId, "approved"));
   };
 
   return (

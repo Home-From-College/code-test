@@ -4,6 +4,7 @@ import User from "./models/User.model";
 import { ContentStatus } from "./enums/ContentStatus.enum";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import { stat } from "fs";
 
 const app = express();
 const PORT = 4000;
@@ -17,6 +18,8 @@ sequelize.addModels([User, Content]);
 
 // Create table if not exists
 sequelize.sync();
+
+app.use(express.json());
 
 app.use(
   cors({
