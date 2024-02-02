@@ -52,13 +52,11 @@ app.get(
   ) => {
     const userId = req.params["userId"];
 
-    // Fetch all content for the specified user from the database
     const content = await Content.findAll({
       where: { userId },
       attributes: ['id', 'url', 'status', 'userId'],
     });
 
-    // Respond with the fetched content
     res.json(content);
   }
 );

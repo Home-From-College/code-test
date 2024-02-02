@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, UserContainer, UsersListContainer } from "./styles";
 import { onLoadDashboardUsers } from "../../redux/actions/dashboard-actions";
-import { onLoadUserContent, onViewUserContent } from "../../redux/actions/content-actions";
+import { onLoadUserContent } from "../../redux/actions/content-actions";
 import ContentContainer from "./ContentContainer";
 
 export const MainContainer = () => {
@@ -17,14 +17,12 @@ export const MainContainer = () => {
   }, []);
 
   const handleViewContent = (userId) => {
-    // Toggle the user ID in the selectedUserIds array
     setSelectedUserIds((prevSelectedUserIds) =>
       prevSelectedUserIds.includes(userId)
         ? prevSelectedUserIds.filter((id) => id !== userId)
         : [...prevSelectedUserIds, userId]
     );
 
-    // Load content for the user
     dispatch(onLoadUserContent(userId));
   };
 
